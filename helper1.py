@@ -657,9 +657,9 @@ def inc_solve_2_layer_conv_fc_acce(epoch_no, batch_no, in_image, out_image, ker,
                 elif pool_layer == 'max':
                     pool_out, pool_ind = f.max_pool2d(conv_out, ker, stri, return_indices=True)
                 # print('conv_out',conv_out.shape)
-                    fc_in = pool_out.reshape(-1, 1)
+                fc_in = pool_out.reshape(-1, 1)
             else:
-                 fc_in = torch.reshape(conv_out, conv_flat_shape)
+                fc_in = torch.reshape(conv_out, conv_flat_shape)
             # --- Filter path: predict with FROZEN classifier W_bar (paper Eq.11,14) ---
             y_ = fun_after(fc_w_bar @ fc_in)
             e_ = fc_out - y_
